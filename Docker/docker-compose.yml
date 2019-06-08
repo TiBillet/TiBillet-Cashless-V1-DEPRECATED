@@ -1,0 +1,10 @@
+version: '3'
+services:
+  cashlessoi_django:
+    image: cashlessoi_django
+    volumes:
+      - "../DjangoFiles:/DjangoFiles"
+    # command: "django-admin startproject CashlessOi"
+    working_dir: /DjangoFiles/
+
+
