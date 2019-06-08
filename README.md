@@ -1,4 +1,4 @@
-# Application de système cashless et de gestion clientèle pour café/bar et évènements culturels.
+# Application de système cashless et de gestion clientèle et ou membres associatifs pour café/bar et évènements culturels.
 
 ## Comprend :
 - Un module Cashless basée sur une cryptomonnaie et une base de donnée interne.
