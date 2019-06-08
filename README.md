@@ -31,4 +31,5 @@
 
 ## Installation :
 
-- Clonez le projet  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
+- Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
+- Build docker image : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
