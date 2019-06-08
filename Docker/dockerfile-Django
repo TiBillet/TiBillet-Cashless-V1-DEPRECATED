@@ -19,4 +19,4 @@ RUN pip install sentry-sdk
 RUN python --version
 
 
- # docker build -t clmanap_django . 
+ # docker build -t CashlessOiDjango . 
