@@ -1,6 +1,6 @@
-Module applicatif Web complet pour une gestion d'évènements culturel associative ou privée.
+# Module applicatif Web complet pour une gestion d'évènements culturel associative ou privée.
 
-Comprend :
+## Comprend :
 - Un module Cashless basée sur une cryptomonnaie et une base de donnée interne.
 - Une api pour intéragir avec des boitiers et lecteurs de carte NFC 
 - Une gestion de membre et d'adhésion associative
@@ -8,7 +8,7 @@ Comprend :
 - Une intégration au système de newletter Mailchimp
 - Un backup horaire des données & une synchronisation avec BorgBackup et Thingsync
 
-Les technologies utilisées :
+## Les technologies utilisées :
 - Docker pour l'infrastructure serveur.
 - Django pour le backend et l'interface d'administration
 - PostgreSQL pour la base de donnée.
@@ -16,12 +16,12 @@ Les technologies utilisées :
 - Cryptomonnaie basée sur Ethereum.
 - Python/Kivy pour l'interface graphique pour boitier cashless sur raspberry ou tout système Linux.
 
-Feuille de route et TODO List :
+## Feuille de route et TODO List :
 - Full intégration de la Cryptomonnaie.
 - Compilation de l'application front pour Android.
 - Passage en full OpenSource.
 - Script d'installations et documentation.
 - Audit de sécurité.
 
-INSTALLATION :
+## Prérequis :
 
