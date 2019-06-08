@@ -27,9 +27,11 @@
 ## Prérequis :
 - Docker
 - Docker Swarm ( optionnal )
+- docker-compose
 - Django 1.11
 
 ## Installation :
 
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
 - Build docker image : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
+- Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
