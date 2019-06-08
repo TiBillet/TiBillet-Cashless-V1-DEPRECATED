@@ -21,11 +21,13 @@
 - Compilation de l'application front pour Android.
 - Passage en full OpenSource.
 - Script d'installations et documentation.
+- Migrations vers dernière version Django
 - Audit de sécurité.
 
 ## Prérequis :
 - Docker
-- Django
+- Docker Swarm ( optionnal )
+- Django 1.11
 
 ## Installation :
 
