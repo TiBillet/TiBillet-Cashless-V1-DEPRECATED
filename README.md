@@ -1,4 +1,4 @@
-# Module applicatif Web complet pour une gestion d'évènements culturel associative ou privée.
+# Application de système cashless et de gestion clientèle pour café/bar et évènements culturels.
 
 ## Comprend :
 - Un module Cashless basée sur une cryptomonnaie et une base de donnée interne.
