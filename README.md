@@ -24,4 +24,5 @@
 - Audit de sécurité.
 
 ## Prérequis :
-
+- Docker
+- Django
