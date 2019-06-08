@@ -26,3 +26,7 @@
 ## Prérequis :
 - Docker
 - Django
+
+## Installation :
+
+- Clonez le projet  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
