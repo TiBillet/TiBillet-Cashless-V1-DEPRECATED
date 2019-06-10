@@ -40,5 +40,5 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Change password for the database and paste it within the docker-compose.yml
 
 
-## INFOS UTILES :
+## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
