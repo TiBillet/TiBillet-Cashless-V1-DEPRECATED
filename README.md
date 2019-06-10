@@ -34,7 +34,7 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Django 1.11
 - Un lecteur de cartes NFC compatible avec la librarie nfcpy https://github.com/nfcpy/nfcpy
 
-## Installation :
+## Installation ( en cours de rédaction ) :
 
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
 - Build docker image : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
