@@ -26,6 +26,7 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Migrations vers dernière version Django
 - Audit de sécurité.
 - Passage en python3 de l'application Kivy lorsque nfcpy sera compatible.
+- Création de tests unitaires
 
 ## Prérequis :
 - Docker
