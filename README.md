@@ -37,7 +37,7 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
 - Build docker image : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
 - Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
-- Change password for the database and paste it within the docker-compose.yml
+- Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
 
 
 ## Infos utiles :
