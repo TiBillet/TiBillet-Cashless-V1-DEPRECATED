@@ -32,7 +32,7 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Docker Swarm ( optionnal )
 - docker-compose
 - Django 1.11
-- Un lecteur de carte NFC compatible avec la librarie nfcpy https://github.com/nfcpy/nfcpy
+- Un lecteur de cartes NFC compatible avec la librarie nfcpy https://github.com/nfcpy/nfcpy
 
 ## Installation :
 
