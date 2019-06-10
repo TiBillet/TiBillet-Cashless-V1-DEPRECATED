@@ -12,9 +12,9 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 ## Les technologies utilisées :
 - Docker pour l'infrastructure serveur.
-- Django pour le backend et l'interface d'administration
+- Django pour le backend, l'API Rest et l'interface d'administration
 - PostgreSQL pour la base de donnée.
-- Ngninx, Traefik & LetsEncrypt coté serveur WEB.
+- Nginx, Traefik & LetsEncrypt coté serveur WEB.
 - Cryptomonnaie basée sur Ethereum.
 - Python/Kivy pour l'interface graphique pour boitier cashless sur raspberry ou tout système Linux.
 
