@@ -1,4 +1,4 @@
-# Application de système cashless et de gestion clientèle et ou membres associatifs pour café/bar et évènements culturels.
+# Application de système cashless et de gestion clientèle et/ou membres associatifs pour café/bar et évènements culturels.
 
 Si vous habitez ou passez sur l'île de la réunion, venez voir l'association des 3Peaks de Manapany dans le sud sauvage qui maintient et utilise cette application au quotidient, pendant les "Dimanches du Sud Sauvage" et surtout pour le Manapany Festival !
 
