@@ -1,0 +1,15 @@
+FROM postgres:9.6-alpine
+
+RUN apk add --no-cache tzdata
+RUN cp /usr/share/zoneinfo/Indian/Reunion /etc/localtime
+RUN echo "Indian/Reunion" >  /etc/timezone
+RUN apk del tzdata
+
+RUN apk add --no-cache supervisor
+RUN mkdir /etc/supervisor.d
+COPY postgres_cron.ini /etc/supervisor.d/postgres_cron.ini
+
+COPY crontab_postgres_everyhour /crontab_postgres_everyhour
+RUN crontab /crontab_postgres_everyhour
+
+ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

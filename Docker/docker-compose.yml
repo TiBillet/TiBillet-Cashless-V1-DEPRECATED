@@ -1,7 +1,7 @@
 version: '3'
 services:
   cashlessoi_postgres:
-    image: "postgres:9.6.2"
+    image: "cashlessoi_postgres"
     volumes:
       - "../Postgres/dbdata:/var/lib/postgresql/data"
       - "../Postgres/SaveDb:/SaveDb"

@@ -37,11 +37,13 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 ## Installation ( en cours de rédaction ) :
 
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
-- Build docker image : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
+- Build docker image for Django : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
+- Build docker image for Postgres/Cron : ``` docker build -t cashlessoi_postgres ./Postgres ```
 - Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
 - Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
 - La suite bientôt :) ...
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
+- Un cron est sur le conteneur du Postgres. il fait un dump toute les heures dans le dossier Postgres/SaveDb
 - Pour restaurer une sauvegarde de DB : ``` cat dump_trucmuche.sql | docker exec -i cashlessoi_postgres psql -U postgres ```. Puis lancer un makemigration et migrate --fake avec Django.
