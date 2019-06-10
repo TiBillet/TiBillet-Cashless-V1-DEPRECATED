@@ -52,7 +52,10 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 ## Licence :
 
-	Copyright 2018 - 2019 Jonas TURBEAUX.
+	Copyright 2017 - 2019 Jonas TURBEAUX.
+	La distribution et l'utilisation de ce programme est régie par la GPL version 3 ou ultérieure.
+	L'auteur demande juste à être invité à chaque évènement ou son système est mis en place ! :)
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
