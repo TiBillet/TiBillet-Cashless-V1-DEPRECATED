@@ -25,12 +25,14 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Script d'installations et documentation.
 - Migrations vers dernière version Django
 - Audit de sécurité.
+- Passage en python3 de l'application Kivy lorsque nfcpy sera compatible.
 
 ## Prérequis :
 - Docker
 - Docker Swarm ( optionnal )
 - docker-compose
 - Django 1.11
+- Un lecteur de carte NFC compatible avec la librarie nfcpy https://github.com/nfcpy/nfcpy
 
 ## Installation :
 
