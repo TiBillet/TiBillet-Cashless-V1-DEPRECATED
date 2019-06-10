@@ -44,3 +44,4 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
+- Pour restaurer une sauvegarde de DB : ``` cat dump_trucmuche.sql | docker exec -i cashlessoi_postgres psql -U postgres ```. Puis lancer un makemigration et migrate --fake avec Django.
