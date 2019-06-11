@@ -38,10 +38,18 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 ## Installation ( en cours de rédaction ) :
 
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
+- Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
 - Build docker image for Django : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
 - Build docker image for Postgres/Cron : ``` docker build -t cashlessoi_postgres ./Postgres ```
 - Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
-- Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
+- Edit the settings.py file for  :
+    - Debug, allowed host and PostgresDatabase integration.
+    - Add Jet, Jet Dashboard and Cashless-oi to the INSTALLED_APPS list.
+    - Set the REST_FRAMEWORK settings.
+    - Configure language and time zone.
+    - set the STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+    - Ask for help if you don't know :)
+    
 - La suite bientôt :) ...
 
 ## Infos utiles :
@@ -57,7 +65,7 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 	La distribution et l'utilisation de ce programme est régie par la GPL version 3 ou ultérieure.
 	L'auteur demande juste à être invité à chaque évènement ou son système est mis en place ! :) 
 	Et puis si vous en faites une utilisation commerciale et que vous gagnez du fric avec, 
-	soyez sympa, faites un Don !
+	soyez sympa, faites un don !
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
