@@ -42,14 +42,14 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Build docker image for Django : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
 - Build docker image for Postgres/Cron : ``` docker build -t cashlessoi_postgres ./Postgres ```
 - Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
-- Edit the settings.py file for  :
+- Edit the settings.py file for  ( RTFM of Django or ask for help if you don't know ) :
     - Debug, allowed host and PostgresDatabase integration.
     - Add Jet, Jet Dashboard and Cashless-oi to the INSTALLED_APPS list.
     - Set the REST_FRAMEWORK settings.
     - Configure language and time zone.
     - set the STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
-    - Ask for help if you don't know :)
-    
+- Start all the container : ``` docker-compose up -f ./Docker/docker-compose.yml ``` use -d if you want detached mode.
+- Launch the makemigrations, migrate and collecstatic inside the django container.
 - La suite bientôt :) ...
 
 ## Infos utiles :
