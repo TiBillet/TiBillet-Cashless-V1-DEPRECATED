@@ -37,6 +37,8 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 ## Installation ( en cours de rédaction ) :
 
+### Backend Django / Docker :
+
 - Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
 - Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
 - Build docker image for Django : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
