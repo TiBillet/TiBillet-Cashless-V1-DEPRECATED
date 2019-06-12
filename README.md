@@ -54,6 +54,14 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 - Launch the makemigrations, migrate and collecstatic inside the django container.
 - La suite bientôt :) ...
 
+
+### Raspberry Pi :
+- Booter sur KivyPie : http://kivypie.mitako.eu/
+- ``` sudo pip install --upgrade pip
+sudo apt-get update; sudo apt-get install python2-kivypie
+sudo pip install -U nfcpy
+python -m nfc ```
+
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
 - Un cron est sur le conteneur du Postgres. il fait un dump toute les heures dans le dossier Postgres/SaveDb
