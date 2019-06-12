@@ -56,14 +56,20 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 
 ### Raspberry Pi :
-- Booter sur KivyPie : http://kivypie.mitako.eu/
+- Booter sur KivyPie : http://kivypie.mitako.eu/ et mettre a jour :
 
 ```
+sudo apt-get update; 
+sudo apt-get install python2-kivypie
+sudo apt-get install xclip xsel
 sudo pip install --upgrade pip
-sudo apt-get update; sudo apt-get install python2-kivypie
 sudo pip install -U nfcpy
+sudo pip install --upgrade sentry-sdk
 python -m nfc
 ```
+- changer le hostname et les mots de passe par defaults
+- rentrer les cred dans le configClient
+
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
