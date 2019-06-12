@@ -57,10 +57,13 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
 
 ### Raspberry Pi :
 - Booter sur KivyPie : http://kivypie.mitako.eu/
-- ``` sudo pip install --upgrade pip
+
+```
+sudo pip install --upgrade pip
 sudo apt-get update; sudo apt-get install python2-kivypie
 sudo pip install -U nfcpy
-python -m nfc ```
+python -m nfc
+```
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
