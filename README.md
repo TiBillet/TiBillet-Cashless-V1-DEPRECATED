@@ -87,9 +87,9 @@ python -m nfc
 
 	Copyright 2017 2019+* - Jonas TURBEAUX - GDNA - 3Peaks.
 	La distribution et l'utilisation de ce programme est régie par la GPL version 3 ou ultérieure.
-	L'auteur demande juste à être invité à chaque évènement ou son système est mis en place ! :) 
+	Les auteurs demandent juste à être invités à chaque évènement ou ce système est mis en place ! :) 
 	Et puis si vous en faites une utilisation commerciale et que vous gagnez du fric avec, 
-	soyez sympa, faites un don !
+	soyez sympa, faites un don ! https://www.3peaks.fr/
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
