@@ -2,7 +2,7 @@
 
 ##### Si vous habitez ou passez sur l'île de la réunion, venez voir l'association des 3Peaks de Manapany dans le Sud Sauvage qui maintient et utilise cette application au quotidien, pendant les "Dimanches du Sud Sauvage" et surtout pour le Manapany Festival !
 
-##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utile. N'hésitez pas à nous contacter !
+##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utile. N'hésitez pas à nous contacter ! ( https://www.3peaks.fr/ )
 
 ## Comprend :
 - Un module Cashless basée sur une cryptomonnaie et une base de donnée interne.
