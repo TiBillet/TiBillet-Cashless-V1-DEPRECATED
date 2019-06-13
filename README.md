@@ -75,7 +75,13 @@ python -m nfc
 - rentrer les creds dans le configClient.
 
 ### Client pour Desktop Ubuntu/Debian :
+- A suivre...
 
+### Client pour Desktop Windows :
+- A suivre...
+
+### Client pour Desktop MacOs :
+- A suivre...
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
