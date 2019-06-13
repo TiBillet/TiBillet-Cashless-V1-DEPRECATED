@@ -10,7 +10,7 @@
 - Une gestion de membre et d'adhésion associative
 - Un suivi d'inventaire des rapports de ventes d'un café/bar
 - Une intégration au système de newsletter Mailchimp
-- Un backup horaire des données & une synchronisation avec BorgBackup et Thingsync
+- Un backup horaire des données & une synchronisation avec BorgBackup et syncthing.
 
 ## Les technologies utilisées :
 - Docker pour l'infrastructure serveur.
@@ -29,6 +29,7 @@
 - Audit de sécurité.
 - Passage en python3 de l'application Kivy lorsque nfcpy sera compatible.
 - Création de tests unitaires
+- Automatisation de syncthing.
 
 ## Prérequis :
 - Docker
