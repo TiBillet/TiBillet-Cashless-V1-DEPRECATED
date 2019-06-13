@@ -8,7 +8,7 @@ Nous avons crée cette application pour une utilisation sur mesure. Certaines fo
 - Une api pour intéragir avec des boitiers et lecteurs de carte NFC 
 - Une gestion de membre et d'adhésion associative
 - Un suivi d'inventaire des rapports de ventes d'un café/bar
-- Une intégration au système de newletter Mailchimp
+- Une intégration au système de newsletter Mailchimp
 - Un backup horaire des données & une synchronisation avec BorgBackup et Thingsync
 
 ## Les technologies utilisées :
@@ -17,7 +17,7 @@ Nous avons crée cette application pour une utilisation sur mesure. Certaines fo
 - PostgreSQL pour la base de donnée.
 - Nginx, Traefik & LetsEncrypt coté serveur WEB.
 - Cryptomonnaie basée sur Ethereum.
-- Python/Kivy pour l'interface graphique pour boitier cashless sur raspberry ou tout système Linux.
+- Python/Kivy pour l'interface graphique pour boîtier cashless sur raspberry ou tout système Linux.
 
 ## Feuille de route et TODO List :
 - Full intégration de la Cryptomonnaie.
@@ -34,7 +34,7 @@ Nous avons crée cette application pour une utilisation sur mesure. Certaines fo
 - Docker Swarm ( optionnal )
 - docker-compose
 - Django 1.11
-- Un lecteur de cartes NFC compatible avec la librarie nfcpy https://github.com/nfcpy/nfcpy
+- Un lecteur de cartes NFC compatible avec la librairie nfcpy https://github.com/nfcpy/nfcpy
 
 ## Installation ( en cours de rédaction ) :
 
@@ -58,7 +58,7 @@ Nous avons crée cette application pour une utilisation sur mesure. Certaines fo
 
 
 ### Client pour Raspberry Pi :
-- Booter sur KivyPie : http://kivypie.mitako.eu/ et mettre a jour :
+- Booter sur KivyPie : http://kivypie.mitako.eu/ et mettre à jour :
 
 ```
 sudo apt-get update; 
@@ -69,8 +69,8 @@ sudo pip install -U nfcpy
 sudo pip install --upgrade sentry-sdk
 python -m nfc
 ```
-- changer le hostname et les mots de passe user par defauts ( sysop / posys ).
-- rentrer les creds dans le configClient
+- changer le hostname et les mots de passe user par defaut ( sysop / posys ).
+- rentrer les creds dans le configClient.
 
 ### Client pour Desktop Ubuntu/Debian :
 
