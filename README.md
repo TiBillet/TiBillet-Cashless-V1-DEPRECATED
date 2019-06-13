@@ -52,10 +52,11 @@ Si vous habitez ou passez sur l'île de la réunion, venez voir l'association de
     - set the STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
 - Start all the container : ``` docker-compose up -f ./Docker/docker-compose.yml ``` use -d if you want detached mode.
 - Launch the makemigrations, migrate and collecstatic inside the django container.
+- Creer un super user sous django.
 - La suite bientôt :) ...
 
 
-### Raspberry Pi :
+### Client pour Raspberry Pi :
 - Booter sur KivyPie : http://kivypie.mitako.eu/ et mettre a jour :
 
 ```
@@ -67,8 +68,10 @@ sudo pip install -U nfcpy
 sudo pip install --upgrade sentry-sdk
 python -m nfc
 ```
-- changer le hostname et les mots de passe par defaults
-- rentrer les cred dans le configClient
+- changer le hostname et les mots de passe user par defauts ( sysop / posys ).
+- rentrer les creds dans le configClient
+
+### Client pour Desktop Ubuntu/Debian :
 
 
 ## Infos utiles :
