@@ -73,6 +73,8 @@ python -m nfc
 ```
 - changer le hostname et les mots de passe user par defaut ( sysop / posys ).
 - rentrer les creds dans le configClient.
+- Si ecran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
+- Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
 
 ### Client pour Desktop Ubuntu/Debian :
 - A suivre...
