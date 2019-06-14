@@ -75,9 +75,20 @@ python -m nfc
 - rentrer les creds dans le configClient.
 - Si ecran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
 - Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
+- Pour lancer un script au démarrage : sudo nano /etc/rc.local 
 
 ### Client pour Desktop Ubuntu/Debian :
-- A suivre...
+
+```
+sudo apt-get update
+sudo apt-get install libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0
+sudo python2 -m pip install install --upgrade pip
+sudo python2 -m pip install kivy
+sudo python2 -m pip install -U nfcpy
+sudo adduser $USER plugdev
+```
+- Puis un ```python -m nfc``` et suivre les indications.
+
 
 ### Client pour Desktop Windows :
 - A suivre...
