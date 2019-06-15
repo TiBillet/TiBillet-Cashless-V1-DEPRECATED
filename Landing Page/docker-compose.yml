@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    image: nginx:alpine
+    volumes:
+     - ./Template:/usr/share/nginx/html
+    networks:
+      - traefik
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      labels:
+        # - "traefik.backend=clmanap_django"
+        - "traefik.port=80"
+        - "traefik.backend.loadbalancer.stickiness=true"
+        - "traefik.frontend.rule=Host:***.***.***"
+        - "traefik.enable=true"
+
+networks:
+  traefik-run:
+    external:
+      name: traefik
