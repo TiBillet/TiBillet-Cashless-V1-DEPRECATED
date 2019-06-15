@@ -2,20 +2,20 @@
 
 ##### Si vous habitez ou passez sur l'île de la réunion, venez voir l'association des 3Peaks de Manapany dans le Sud Sauvage qui maintient et utilise cette application au quotidien, pendant les "Dimanches du Sud Sauvage" et surtout pour le Manapany Festival !
 
-##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utile. N'hésitez pas à nous contacter ! ( https://www.3peaks.fr/ )
+##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utiles. N'hésitez pas à nous contacter ! ( https://www.3peaks.fr/ )
 
 ## Comprend :
-- Un module Cashless basée sur une cryptomonnaie et une base de donnée interne.
-- Une api pour intéragir avec des boitiers et lecteurs de carte NFC 
+- Un module Cashless basé sur une cryptomonnaie et une base de données interne.
+- Une api pour interagir avec des boitiers et lecteurs de cartes NFC 
 - Une gestion de membre et d'adhésion associative
-- Un suivi d'inventaire des rapports de ventes d'un café/bar
+- Un suivi d'inventaire des rapports de ventes d'un café-bar
 - Une intégration au système de newsletter Mailchimp
-- Un backup horaire des données & une synchronisation avec BorgBackup et syncthing.
+- Un backup horaire des données & une synchronisation avec BorgBackup et Syncthing.
 
 ## Les technologies utilisées :
 - Docker pour l'infrastructure serveur.
-- Django pour le backend, l'API Rest et l'interface d'administration
-- PostgreSQL pour la base de donnée.
+- Django pour le backend, l'API REST et l'interface d'administration
+- PostgreSQL pour la base de données.
 - Nginx, Traefik & LetsEncrypt coté serveur WEB.
 - Cryptomonnaie basée sur Ethereum.
 - Python/Kivy pour l'interface graphique pour boîtier cashless sur raspberry ou tout système Linux.
@@ -23,7 +23,7 @@
 ## Feuille de route et TODO List :
 - Full intégration de la Cryptomonnaie.
 - Compilation de l'application front pour Android.
-- Passage en full OpenSource.
+- Passage en full Open Source.
 - Script d'installations et documentation.
 - Migrations vers dernière version Django
 - Audit de sécurité.
@@ -60,7 +60,7 @@
 
 
 ### Client pour Raspberry Pi :
-- Booter sur KivyPie : http://kivypie.mitako.eu/ et mettre à jour :
+- Booter sur KivyPie : http://kivypie.mitako.eu/ puis :
 
 ```
 sudo apt-get update; 
@@ -71,9 +71,9 @@ sudo pip install -U nfcpy
 sudo pip install --upgrade sentry-sdk
 python -m nfc
 ```
-- changer le hostname et les mots de passe user par defaut ( sysop / posys ).
-- rentrer les creds dans le configClient.
-- Si ecran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
+- changer le hostname et les mots de passe user par défaut ( sysop / posys ).
+- rentrer les creds dans le fichier configClient.py .
+- Si écran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
 - Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
 - Pour lancer un script au démarrage : sudo nano /etc/rc.local 
 
@@ -98,7 +98,7 @@ sudo adduser $USER plugdev
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
-- Un cron est sur le conteneur du Postgres. il fait un dump toute les heures dans le dossier Postgres/SaveDb
+- Un cron est sur le conteneur du Postgres. il fait un dump toutes les heures dans le dossier Postgres/SaveDb
 - Pour restaurer une sauvegarde de DB : ``` cat dump_trucmuche.sql | docker exec -i cashlessoi_postgres psql -U postgres ```. Puis lancer un makemigration et migrate --fake avec Django.
 
 
@@ -106,8 +106,8 @@ sudo adduser $USER plugdev
 ## Licence :
 
 	Copyright 2017 2019+* - Jonas TURBEAUX - GDNA - 3Peaks.
-	La distribution et l'utilisation de ce programme est régie par la GPL version 3 ou ultérieure.
-	Les auteurs demandent juste à être invités à chaque évènement ou ce système est mis en place ! :) 
+	La distribution et l'utilisation de ce programme sont régies par la GPL version 3 ou ultérieure.
+	Les auteurs demandent juste à être invités à chaque évènement où ce système est mis en place ! :) 
 	Et puis si vous en faites une utilisation commerciale et que vous gagnez du fric avec, 
 	soyez sympa, faites un don ! https://www.3peaks.fr/
 
