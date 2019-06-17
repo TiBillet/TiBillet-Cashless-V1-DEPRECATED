@@ -54,8 +54,20 @@
     - Configure language and time zone.
     - set the STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
 - Start all the container : ``` docker-compose up -f ./Docker/docker-compose.yml ``` use -d if you want detached mode.
-- Launch the makemigrations, migrate and collecstatic inside the django container.
-- Creer un super user sous django.
+- Launch the makemigrations, migrate and collecstatic inside the django container :
+    - Search the name of the django container and exec within it
+ ``` 
+ docker ps
+ docker exec -ti CONTAINERID bash
+ python manage.py makemigrations
+ python manage.py migrate
+ python manage.py collectstatic
+ ``` 
+- Create super user on django.
+ ``` 
+ python manage.py makemigrations createsuperuser
+ ``` 
+
 - La suite bientôt :) ...
 
 
