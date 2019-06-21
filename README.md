@@ -73,6 +73,7 @@
 
 ### Client pour Raspberry Pi :
 - Booter sur KivyPie : http://kivypie.mitako.eu/ puis :
+- Brancher le lecteur NFC
 
 ```
 sudo apt-get update; 
@@ -88,9 +89,11 @@ python -m nfc
 - Si écran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
 - Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
 - Pour lancer un script au démarrage : sudo nano /etc/rc.local 
+- Lancer le script dans le dossier Kivy ``` python2 Client_Kivy.py ```
 
 ### Client pour Desktop Ubuntu/Debian :
 
+- Brancher le lecteur NFC
 ```
 sudo apt-get update
 sudo apt-get install libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0
@@ -100,6 +103,7 @@ sudo python2 -m pip install -U nfcpy
 sudo adduser $USER plugdev
 ```
 - Puis un ```python -m nfc``` et suivre les indications.
+- Lancer le script dans le dossier Kivy ``` python2 Client_Kivy.py ```
 
 
 ### Client pour Desktop Windows :
