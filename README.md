@@ -67,11 +67,14 @@
  ``` 
  python manage.py makemigrations createsuperuser
  ``` 
+ - log in to the admin panel.
+ - Créate articles
 
 - La suite bientôt :) ...
 
 
 ### Client pour Raspberry Pi :
+
 - Booter sur KivyPie : http://kivypie.mitako.eu/ puis :
 - Brancher le lecteur NFC
 
@@ -84,16 +87,18 @@ sudo pip install -U nfcpy
 sudo pip install --upgrade sentry-sdk
 python -m nfc
 ```
+
 - changer le hostname et les mots de passe user par défaut ( sysop / posys ).
 - rentrer les creds dans le fichier configClient.py .
 - Si écran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
 - Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
-- Pour lancer un script au démarrage : sudo nano /etc/rc.local 
 - Lancer le script dans le dossier Kivy ``` python2 Client_Kivy.py ```
+- Pour lancer un script au démarrage : sudo nano /etc/rc.local 
 
 ### Client pour Desktop Ubuntu/Debian :
 
 - Brancher le lecteur NFC
+
 ```
 sudo apt-get update
 sudo apt-get install libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0
