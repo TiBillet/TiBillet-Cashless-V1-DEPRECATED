@@ -1,6 +1,6 @@
 # Application de système cashless et de gestion clientèle et/ou membres associatifs pour café/bar et évènements culturels.
 
-### https://www.tibilet.re
+### https://www.tibillet.re
 
 ##### Si vous habitez ou passez sur l'île de la réunion, venez voir l'association des 3Peaks de Manapany dans le Sud Sauvage qui maintient et utilise cette application au quotidien, pendant les "Dimanches du Sud Sauvage" et surtout pour le Manapany Festival !
 
