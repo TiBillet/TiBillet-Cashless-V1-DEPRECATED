@@ -112,7 +112,7 @@ sudo python2 -m pip install -U nfcpy
 sudo adduser $USER plugdev
 ```
 - Puis un ```python -m nfc``` et suivre les indications.
-- Remplir le fichier configClient.py avec les cred crée sur Django.
+- Remplir le fichier configClient.py avec les cred crée sur Django. Attention, pas avec le superuser !
 - Lancer le script dans le dossier Kivy ``` python2 Client_Kivy.py ```
 
 
