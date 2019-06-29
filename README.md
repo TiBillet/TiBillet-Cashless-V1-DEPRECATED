@@ -47,7 +47,7 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
 
 ### Backend Django / Docker :
 
-- Clone project  : ``` git clone https://github.com/Nasjoe/Cashless-oi.git ```
+- Clone project  : ``` git clone https://github.com/Nasjoe/TiBillet-Cashless.git ```
 - Create strong password for the database and paste it within the docker-compose.yml. ex : ```pwgen 30 -yC``` 
 - Build docker image for Django : ``` docker build -t cashlessoi_django -f dockerfile-Django ./Docker ```
 - Build docker image for Postgres/Cron : ``` docker build -t cashlessoi_postgres ./Postgres ```
