@@ -6,6 +6,10 @@
 
 ##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utiles. N'hésitez pas à nous contacter ! ( https://www.3peaks.fr/ )
 
+## Autre dépots du projets :
+- https://github.com/Nasjoe/TiBillet-Cashless
+- https://github.com/Nasjoe/TiBillet-LandingPage
+
 ## Comprend :
 - Un module Cashless basé sur une cryptomonnaie et une base de données interne.
 - Une api pour interagir avec des boitiers et lecteurs de cartes NFC 
