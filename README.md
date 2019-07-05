@@ -51,11 +51,16 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
 
 ### Backend Django / Docker :
 
-- Clone project  : ``` git clone https://github.com/Nasjoe/TiBillet-Cashless.git ```
-- Create strong password for the database and paste it within the Docker/docker-compose.yml. ex : ```pwgen 30 -yC``` 
-- Build docker image for Django : ``` cd Docker && docker build -t cashless_django -f dockerfile-Django . ```
-- Build docker image for Postgres/Cron : ``` docker build -t cashless_postgres ./Postgres ```
-- Init Django Project : ``` docker-compose run  -u 1000  --rm -f /Docker/docker-compose-django.yml django-admin startproject CashlessOi /DjangoFiles```
+- Clone project  : 
+    ```git clone https://github.com/Nasjoe/TiBillet-Cashless.git```
+- Create strong password for the database and paste it within the Docker/docker-compose.yml. ex : 
+    ```pwgen 30 -yC``` 
+- Build docker image for Django : 
+    ```docker build -t cashless_django ./Docker```
+- Build docker image for Postgres/Cron : 
+    ```docker build -t cashless_postgres ./Postgres```
+- Init Django Project : 
+    ```docker-compose run -u 1000 --rm -f ./Docker/docker-compose-django.yml django-admin startproject Cashless /DjangoFiles```
 - Edit the settings.py file for  ( RTFM of Django or ask for help if you don't know ) :
     - Debug, allowed host and PostgresDatabase integration.
     - Add Jet, Jet Dashboard and Cashless-oi to the INSTALLED_APPS list.

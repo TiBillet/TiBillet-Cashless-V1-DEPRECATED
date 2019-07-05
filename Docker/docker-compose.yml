@@ -1,32 +1,32 @@
 version: '3'
 services:
-  cashlessoi_postgres:
-    image: "cashlessoi_postgres"
+  cashless_postgres:
+    image: "cashless_postgres"
     volumes:
       - "../Postgres/dbdata:/var/lib/postgresql/data"
       - "../Postgres/SaveDb:/SaveDb"
       - "../Postgres/cron.sh:/cron.sh"
-    container_name: cashlessoi_postgres
-    hostname: cashlessoi_postgres
+    container_name: cashless_postgres
+    hostname: cashless_postgres
     environment:
-      POSTGRES_USER: cashlessoi_postgres_user
+      POSTGRES_USER: cashless_postgres_user
       POSTGRES_PASSWORD: YOUR_SECRET_HERE
-      POSTGRES_DB: cashlessoi_postgres_db 
+      POSTGRES_DB: cashless_postgres_db 
 
-  cashlessoi_django:
-    image: cashlessoi_django
+  cashless_django:
+    image: cashless_django
     volumes:
       - "../DjangoFiles:/DjangoFiles"
     working_dir: /DjangoFiles/
-    container_name: cashlessoi_django
-    hostname: cashlessoi_django
+    container_name: cashless_django
+    hostname: cashless_django
     command: "bash /DjangoFiles/launch.sh"
     depends_on:
-      - cashlessoi_postgres
+      - cashless_postgres
     links:
-      - cashlessoi_postgres
+      - cashless_postgres
 
-  cashlessoi_nginx:
+  cashless_nginx:
     image: nginx
     volumes:
       - "../DjangoFiles:/DjangoFiles"
@@ -34,5 +34,5 @@ services:
     ports :
       - 8000:80
     depends_on:
-      - cashlessoi_django
+      - cashless_django
 
