@@ -42,7 +42,7 @@
 - Docker Swarm ( optionnal )
 - docker-compose
 - Django 1.11
-- Un lecteur de cartes NFC compatible avec la librairie nfcpy https://github.com/nfcpy/nfcpy ( par ex: https://www.amazon.fr/KKmoon-ACR122U-Contact-Reader-Writer/dp/B00M2F21BM )
+- Un lecteur de cartes NFC compatible avec la librairie nfcpy https://github.com/nfcpy/nfcpy ( par ex: KKmoon ACR122U NFC RFID )
 
 ## Installation ( en cours de rédaction ) :
 
