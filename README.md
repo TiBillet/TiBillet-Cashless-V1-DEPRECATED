@@ -219,7 +219,7 @@ sudo adduser $USER plugdev
 
 ## Conseil pour une bonne mise en production :
 - Creez un compte sur Sentry et rajoutez sur votre settings.py et dans les scripts de vos clients les infos nécéssaire. Cela vous aidera beaucoup en cas de bug. Et ça nous aidera aussi de notre coté si vous voulez qu'on vous file un coup de main !
-- Faites un backup de vos backups ! Une solution à base de syncthing, un raid, un cluster de postgres, etc. N'attendez pas d'avoir des soucis de hardware ! Copiez sur clef usb régulièrement le dossier SaveDb de Postgres par exemple !
+- Faites un backup de vos backups ! Une solution à base de syncthing, un raid5, un cluster de postgres, etc. N'attendez pas d'avoir des soucis de hardware ! Copiez sur clef usb régulièrement le dossier SaveDb de Postgres par exemple !
 - Vos applications clients rament ? Mettez le serveur sur le réseau local. 
 - Évitez le wifi sur les appli clients. Et surtout sur le serveur. Lorsqu'il n'y a personne dans votre salle, ça passe bien, mais des qu'elle est remplie, le wifi va s'écrouler !
 - Séparez le réseau internet et le réseau du cashless si vous le pouvez ! C'est la meilleure façon de se prémunir des personnes mal intentionnées.
