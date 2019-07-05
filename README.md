@@ -185,7 +185,7 @@ python -m nfc
 - rentrer les creds dans le fichier configClient.py .
 - Si écran tactile, regarder du coté de : https://github.com/goodtft/LCD-show.git
 - Cred wifi à changer dans /boot/interfaces. Possibilité de le faire directement sur la carte SD
-- Remplir le fichier configClient.py avec les cred crée sur Django. Attention, evitez le superuser...
+- Remplir le fichier configClient.py avec les cred crées sur Django via l'interface admin. Attention, evitez le superuser...
 - Lancer le script dans le dossier Kivy ``` python2 Client_Kivy.py ```
 - Pour lancer un script au démarrage : sudo nano /etc/rc.local 
 
