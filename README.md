@@ -219,6 +219,14 @@ sudo adduser $USER plugdev
 - Les conteneurs sont lancés avec restart=always. Ce qui veut dire qu'ils se relanceront tout le temps, même après un reboot de l'hôte. Pour les stopper définitivement, lancer un ```docker-compose down```.
 
 
+## Conseil pour une bonne mise en production :
+- Creez un compte sur Sentry et rajoutez sur votre settings.py et dans les scripts de vos clients les infos nécéssaire. Cela vous aidera beaucoup en cas de bug. Et ça nous aidera aussi de notre coté si vous voulez qu'on vous file un coup de main !
+- Faites un backup de vos backups ! Une solution à base de syncthing, un raid, un cluster de postgres, etc. N'attendez pas d'avoir des soucis de hardware ! Copiez sur clef usb régulièrement le dossier SaveDb de Postgres par exemple !
+- Vos applications clients rament ? Mettez le serveur sur le réseau local. 
+- Évitez le wifi sur les appli clients. Et surtout sur le serveur. Lorsqu'il n'y a personne dans votre salle, ça passe bien, mais des qu'elle est remplie, le wifi va s'écrouler !
+- Séparez le réseau internet et le réseau du cashless si vous le pouvez ! La meilleure façon de se prémunir de personnes mal intentionnées.
+- Séparez bien le point recharge du point de vente. C'est la clef pour un service au bar fluide !
+- N'hésitez surtout pas à nous contacter à la moindre question ! On vous donnera plein de conseils :)
 
 ## Licence :
 
