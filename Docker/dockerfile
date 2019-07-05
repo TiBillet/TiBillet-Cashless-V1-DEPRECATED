@@ -15,6 +15,7 @@ RUN pip install django-jet
 RUN pip install mailchimp3
 RUN pip install gunicorn
 RUN pip install sentry-sdk
+RUN pip install python-dateutil
 
 RUN python --version
 
