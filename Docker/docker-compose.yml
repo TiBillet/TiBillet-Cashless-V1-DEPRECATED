@@ -2,6 +2,7 @@ version: '3'
 services:
   cashless_postgres:
     image: "cashless_postgres"
+    restart: on-failure
     volumes:
       - "../Postgres/dbdata:/var/lib/postgresql/data"
       - "../Postgres/SaveDb:/SaveDb"
@@ -15,6 +16,7 @@ services:
 
   cashless_django:
     image: cashless_django
+    restart: on-failure
     volumes:
       - "../DjangoFiles:/DjangoFiles"
     working_dir: /DjangoFiles/
@@ -28,6 +30,7 @@ services:
 
   cashless_nginx:
     image: nginx
+    restart: on-failure
     volumes:
       - "../DjangoFiles:/DjangoFiles"
       - "../Nginx:/etc/nginx/conf.d"
