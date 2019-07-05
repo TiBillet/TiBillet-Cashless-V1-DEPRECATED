@@ -129,6 +129,7 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
     cd Docker
     docker-compose up
     ``` 
+    
 - Launch the makemigrations, migrate and collecstatic inside the django container :
     - Search the name of the django container and exec within it
  ``` 
