@@ -124,6 +124,17 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
     MEDIA_ROOT = 'MEDIA_ROOT'
     ```
 
+- Edit the urls.py and replace all with :
+
+    ```
+    from django.conf.urls import url, include
+    from APIcashless import urls
+
+    urlpatterns = [
+        url(r'^', include(urls)),
+    ]
+    ```
+
 - Start all the container ( use -d if you want detached mode. ) :
     ```
     cd Docker
@@ -138,9 +149,19 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
      python manage.py collectstatic
      python manage.py createsuperuser
      ``` 
- - log in to the admin panel.
- - Create one user for each Kivy Client
- - Créate articles
+     - Exit the container ( ctrl + d )
+
+- Restart all the container :
+     ``` 
+     docker-compose down
+     docker-compose up -d
+     ``` 
+
+- log in to the admin panel in http://localhost:8000
+
+- Create one user for each Kivy Client.
+- Create Master Card for each point of sale.
+- Créate articles.
 
 - La suite bientôt :) ...
 
