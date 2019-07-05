@@ -214,7 +214,7 @@ sudo adduser $USER plugdev
 
 ## Infos utiles :
 - Les logs des serveurs web Nginx & python Gunicorn sont dans le répertoire www/ de DjangoFiles.
-- Un cron est sur le conteneur du Postgres. il fait un dump toutes les heures dans le dossier Postgres/SaveDb
+- Un cron est sur le conteneur du Postgres. il fait un dump toutes les heures dans le dossier Postgres/SaveDb. Pour le modifier, c'est dans le dossier Postgres. Pensez à rebuild l'image docker !
 - Pour restaurer une sauvegarde de DB : ``` cat dump_trucmuche.sql | docker exec -i cashlessoi_postgres psql -U postgres ```. Puis lancer un makemigration et migrate --fake avec Django.
 - Les conteneurs sont lancés avec restart=always. Ce qui veut dire qu'ils se relanceront tout le temps, même après un reboot de l'hote. Pour les stopper définitivement, lancer un ```docker-compose down```.
 
