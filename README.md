@@ -149,7 +149,7 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
      python manage.py collectstatic
      python manage.py createsuperuser
      ``` 
-     - Exit the container ( ctrl + d )
+     - Detach from the container ( ctrl + d )
 
 - Restart all the container :
      ``` 
