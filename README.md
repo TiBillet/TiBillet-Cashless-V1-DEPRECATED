@@ -46,7 +46,7 @@
 
 ## Installation ( en cours de rédaction ) :
 
-Nous vous proposons deux façons d'utiliser Ti Billet. La première est une installation par vous-même, expliqué ci-dessous. À réserver aux personnes connaissant les environnements Linux, docker, Django et python. Rien de compliqué, mais nous nous proposons aussi de vous aider dès le début de votre projet avec une solution clef en main et une personnalisation sur-mesure. N'hésitez pas à nous contacter !
+Nous vous proposons deux façons d'utiliser Ti Billet. La première est une installation par vous-même, expliquée ci-dessous. À réserver aux personnes connaissant les environnements Linux, docker, Django et python. Rien de compliqué, mais nous nous proposons aussi de vous aider dès le début de votre projet avec une solution clef en main et une personnalisation sur-mesure. N'hésitez pas à nous contacter !
 
 
 ### Backend Django / Docker :
