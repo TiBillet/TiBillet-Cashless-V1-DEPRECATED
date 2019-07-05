@@ -60,14 +60,75 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
 - Build docker image for Postgres/Cron : 
     ```docker build -t cashless_postgres ./Postgres```
 - Init Django Project : 
-    ```docker-compose run -u 1000 --rm -f ./Docker/docker-compose-django.yml django-admin startproject Cashless /DjangoFiles```
-- Edit the settings.py file for  ( RTFM of Django or ask for help if you don't know ) :
-    - Debug, allowed host and PostgresDatabase integration.
-    - Add Jet, Jet Dashboard and Cashless-oi to the INSTALLED_APPS list.
-    - Set the REST_FRAMEWORK settings.
+    ```
+    cd Docker
+    docker-compose run -u 1000 --rm cashless_django django-admin startproject Cashless /DjangoFiles
+    ```
+- You should have new files within the DjangoFiles folder. 
+- Edit the settings.py file ( RTFM of Django or ask for help if you don't know ) :
+    - Debug = False
+    - ALLOWED_HOSTS = ['YOUR DNS OR CLIENT IP ONLY !'] 
+    - Add Jet, Jet Dashboard and APIcashless to the INSTALLED_APPS list ( be careful of the order ) :
+    ```
+    INSTALLED_APPS = [
+        'jet.dashboard',
+        'jet',
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'APIcashless',
+    ]
+    JET_SIDE_MENU_COMPACT = True
+    JET_CHANGE_FORM_SIBLING_LINKS = False
+    ```
+    - Postgres integration ( replace existing DATABASE information ) :
+    ```
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'cashless_postgres_db',
+            'USER': 'cashless_postgres_user',
+            'PASSWORD': 'YOUR STRONG PASSW WITHIN THE docker-compose file',
+            'HOST': 'cashless_postgres',
+            'PORT': '5432',
+        }
+    }
+    ```
+    - Set the REST_FRAMEWORK settings :
+
+    ```
+    REST_FRAMEWORK = {
+        # Use Django's standard `django.contrib.auth` permissions,
+        # or allow read-only access for unauthenticated users.
+        'DEFAULT_PERMISSION_CLASSES': [
+            # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+            'rest_framework.permissions.IsAuthenticated',
+        ]
+    }
+    ```
+
     - Configure language and time zone.
-    - set the STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
-- Start all the container : ``` docker-compose up -f ./Docker/docker-compose.yml ``` use -d if you want detached mode.
+
+    ```
+    #( for french Reunion island : )
+    LANGUAGE_CODE = 'fr-fr'
+    TIME_ZONE = 'Indian/Reunion'
+    ```
+
+    - set the STATIC_ROOT and MEDIA_ROOT :
+    ```
+    STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+    MEDIA_ROOT = 'MEDIA_ROOT'
+    ```
+
+- Start all the container ( use -d if you want detached mode. ) :
+    ```
+    cd Docker
+    docker-compose up
+    ``` 
 - Launch the makemigrations, migrate and collecstatic inside the django container :
     - Search the name of the django container and exec within it
  ``` 
