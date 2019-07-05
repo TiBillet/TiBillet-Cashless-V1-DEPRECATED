@@ -129,20 +129,15 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
     cd Docker
     docker-compose up
     ``` 
-    
-- Launch the makemigrations, migrate and collecstatic inside the django container :
-    - Search the name of the django container and exec within it
- ``` 
- docker ps
- docker exec -ti CONTAINERID bash
- python manage.py makemigrations
- python manage.py migrate
- python manage.py collectstatic
- ``` 
-- Create super user on django.
- ``` 
- python manage.py makemigrations createsuperuser
- ``` 
+
+- Launch the makemigrations, migrate, collecstatic and create superuser inside the django container :
+     ``` 
+     docker exec -ti cashless_django bash
+     python manage.py makemigrations APIcashless jet
+     python manage.py migrate
+     python manage.py collectstatic
+     python manage.py createsuperuser
+     ``` 
  - log in to the admin panel.
  - Create one user for each Kivy Client
  - Créate articles
