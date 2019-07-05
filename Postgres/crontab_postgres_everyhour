@@ -1,2 +1,2 @@
 # save DB
-50 8-23 * * * /cron.sh
+50 * * * * /cron.sh
