@@ -42,7 +42,7 @@
 - Docker Swarm ( optionnal )
 - docker-compose
 - Django 1.11
-- Un lecteur de cartes NFC compatible avec la librairie nfcpy https://github.com/nfcpy/nfcpy
+- Un lecteur de cartes NFC compatible avec la librairie nfcpy https://github.com/nfcpy/nfcpy ( par ex: https://www.amazon.fr/KKmoon-ACR122U-Contact-Reader-Writer/dp/B00M2F21BM )
 
 ## Installation ( en cours de rédaction ) :
 
@@ -224,7 +224,7 @@ sudo adduser $USER plugdev
 - Faites un backup de vos backups ! Une solution à base de syncthing, un raid, un cluster de postgres, etc. N'attendez pas d'avoir des soucis de hardware ! Copiez sur clef usb régulièrement le dossier SaveDb de Postgres par exemple !
 - Vos applications clients rament ? Mettez le serveur sur le réseau local. 
 - Évitez le wifi sur les appli clients. Et surtout sur le serveur. Lorsqu'il n'y a personne dans votre salle, ça passe bien, mais des qu'elle est remplie, le wifi va s'écrouler !
-- Séparez le réseau internet et le réseau du cashless si vous le pouvez ! La meilleure façon de se prémunir de personnes mal intentionnées.
+- Séparez le réseau internet et le réseau du cashless si vous le pouvez ! C'est la meilleure façon de se prémunir des personnes mal intentionnées.
 - Séparez bien le point recharge du point de vente. C'est la clef pour un service au bar fluide !
 - N'hésitez surtout pas à nous contacter à la moindre question ! On vous donnera plein de conseils :)
 
