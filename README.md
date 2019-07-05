@@ -66,8 +66,8 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
     ```
 - You should have new files within the DjangoFiles folder. 
 - Edit the DjangoFiles/Cashless/settings.py file ( RTFM of Django or ask for help if you don't know ) :
-    - Debug = False
-    - ALLOWED_HOSTS = ['YOUR DNS OR CLIENT IP ONLY !'] 
+    - ```Debug = False```
+    - ```ALLOWED_HOSTS = ['YOUR DNS OR LOCAL IP ONLY !']```
     - Add Jet, Jet Dashboard and APIcashless to the INSTALLED_APPS list ( be careful of the order ) :
     ```
     INSTALLED_APPS = [
