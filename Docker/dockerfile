@@ -1,21 +1,40 @@
-from python:3.6-slim
+from python:3.7-slim
 
 RUN apt-get update 
 RUN apt-get upgrade -y
-RUN apt install cron -y
 
 RUN pip install pip --upgrade
-RUN pip install django==1.11
+RUN pip install django==2.2.9
+RUN pip install ipython
+RUN pip install ipdb
 RUN pip install djangorestframework
-RUN pip install django-admin-rangefilter
 RUN pip install requests
 RUN pip install savoir
 RUN pip install psycopg2-binary
+# RUN pip install pandas
 RUN pip install django-jet
 RUN pip install mailchimp3
 RUN pip install gunicorn
+RUN apt install cron -y
+
+# RUN pip install django-simple-history
+RUN pip install django-admin-rangefilter
+RUN pip install django_debug_toolbar
+
 RUN pip install sentry-sdk
+
+RUN apt install curl -y
+RUN apt install borgbackup -y
+RUN curl -sL https://sentry.io/get-cli/ | bash
+
+RUN mkdir -p /usr/share/man/man1
+RUN mkdir -p /usr/share/man/man7
+RUN apt-get install -y --no-install-recommends postgresql-client
+
 RUN pip install python-dateutil
+
+RUN pip install inotify
+RUN pip install django-silk
 
 RUN python --version
 

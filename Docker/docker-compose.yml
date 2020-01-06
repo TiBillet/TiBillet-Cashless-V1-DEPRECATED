@@ -1,12 +1,11 @@
-version: '3'
+version: '3.7'
 services:
   cashless_postgres:
-    image: "cashless_postgres"
+    image: postgres:11.5-alpine
     restart: always
     volumes:
       - "../Postgres/dbdata:/var/lib/postgresql/data"
-      - "../Postgres/SaveDb:/SaveDb"
-      - "../Postgres/cron.sh:/cron.sh"
+      - "/etc/localtime:/etc/localtime:ro"
     container_name: cashless_postgres
     hostname: cashless_postgres
     environment:
