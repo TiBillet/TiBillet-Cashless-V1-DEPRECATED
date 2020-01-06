@@ -48,6 +48,7 @@ urlpatterns = [
     url(r'^deleteDerniereAction/', views.deleteDerniereAction),
     url(r'^addEmailToMailchimp/', views.addEmailToMailchimp),
     url(r'^reportsArticleVendus/', views.reportsArticleVendus),
+    url(r'^PostChargeweb/', views.PostChargeweb),
 
     url(r'^', include(router.urls)),
 ]

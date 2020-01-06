@@ -1,17 +1,32 @@
 from django.contrib import admin
+# from simple_history.admin import SimpleHistoryAdmin
 from .models import *
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
+from django.urls import reverse
 from jet.admin import CompactInline
 from django import forms
+# from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 from jet.filters import DateRangeFilter
+# admin.site.register(CarteCashless, SimpleHistoryAdmin)
+# admin.site.register(ArticlesVendu)
+# admin.site.register(pointOfSale)
+# admin.site.register(tagIdCardMaitresse)
+# admin.site.register(Membres)
 
-admin.site.register(moyenPaiement)
+# admin.site.register(inventaire)
+
+# admin.site.register(moyenPaiement)
+
+# class BoissonCoutantAdmin(admin.ModelAdmin):
+#     list_display = ('date', 'nbrBoisson','CarteCashless')
+#     # search_fields = ['name',]
+# admin.site.register(BoissonCoutant, BoissonCoutantAdmin)
 
 
-class BoissonCoutantAdmin(admin.ModelAdmin):
-    list_display = ('date', 'nbrBoisson','CarteCashless')
-    # search_fields = ['name',]
-admin.site.register(BoissonCoutant, BoissonCoutantAdmin)
+
+
+# Register your models here. 
+# ('name' ,'wallet' ,'cash' ,'peaksu' ,'articles' ,'responsable' ,'membre' ,'dernierArticles' ,'history')
 
 
 
@@ -23,22 +38,46 @@ def Decomptabiliser(modeladmin, request, queryset):
     queryset.update(comptabilise=False)
 Decomptabiliser.short_description = "Comptabilise = False"
 
+# class fermetureCaisseAdmin(admin.ModelAdmin):
+    # list_display = ('date', 'chiffre_d_affaire', 'fond_de_caisse')
+
+# admin.site.register(fermetureCaisse, fermetureCaisseAdmin)
 
 class PageArticleAdmin(admin.ModelAdmin):
     list_display = ('name', 'poids')
     search_fields = ['name',]
 admin.site.register(PageArticle, PageArticleAdmin)
 
+
+# class posInlineForm(forms.ModelForm):
+#     posInlineFormList = forms.ModelMultipleChoiceField(queryset=pointOfSale.objects.all(), required=False)
+#     class Meta:
+#         model = pointOfSale
+#         fields = ['articles']
+
+
+# class posInline(CompactInline):
+    # model = pointOfSale.articles.through
+    # extra = 3
+    # max_num = 10
+    # form = posInlineForm
+
 class ArticlesAdmin(admin.ModelAdmin):
     list_display = ('name', 'prix','prixAchat', 'page', 'poidListe', 'alcool')
     search_fields = ['name',]
+    # inlines = [ posInline, ]
+    # form = posInlineForm
+
+    # # list_editable = ('prix', 'prixAchat', 'page', 'poidListe')
+
 admin.site.register(Articles, ArticlesAdmin)
 
 class CarteCashlessAdmin(admin.ModelAdmin):
     list_display = ('number', 'tagId', 'peaksu','peaksuCadeau','membre','wallet')
     search_fields = ['tagId','number','membre__name']
-    readonly_fields = ("wallet", "tagId", "number")
+    # readonly_fields = ("wallet", "tagId", "number")
     list_filter = ['membre','number']
+    list_per_page = 20
 
 admin.site.register(CarteCashless, CarteCashlessAdmin)
 
@@ -64,17 +103,21 @@ class DefaultFilterMixIn(admin.ModelAdmin):
 
 
 class ArticlesVendusAdmin(DefaultFilterMixIn):
-    list_display = ('article', 'prix','qty','dateTps', 'carte', 'moyenPaiement', 'responsable','pos', 'BoitierUser', 'comptabilise',)
+    list_display = ('article', 'prix','qty','dateTps', 'carte', 'moyenPaiement', 'responsable','pos', 'BoitierUser')
     # readonly_fields = ('article', 'prix','qty','dateTps','membre', 'carte', 'moyenPaiement', 'responsable','pos' )
     # search_fields = ['dateTps']
     list_filter = ['article','membre', 'carte','responsable',('dateTps', DateRangeFilter), 'moyenPaiement','pos', 'BoitierUser']
     default_filters = ('pos__id__exact=48',)
     actions = [moyenPaiementCadeau, Decomptabiliser]
+    list_per_page = 50
+    
+
 admin.site.register(ArticlesVendus, ArticlesVendusAdmin)
 
 class rapportArticlesVenduAdmin(admin.ModelAdmin):
     list_display = ('date', 'article','qty')
     list_filter = ['article',('date', DateRangeFilter)]
+    list_per_page = 100
 admin.site.register(rapportArticlesVendu, rapportArticlesVenduAdmin)
 
 class rapportBarAdmin(DefaultFilterMixIn):
@@ -83,13 +126,18 @@ class rapportBarAdmin(DefaultFilterMixIn):
 
     list_filter = ['date', 'responsable']
     default_filters = ('responsable__id__exact=733',)
+    list_per_page = 30
 
 admin.site.register(rapportBar, rapportBarAdmin)
 
+# class pointOfSaleAdmin(admin.ModelAdmin):
+    # list_display = ('name','cash', 'wallet')
+    # search_fields = ['name']
+# admin.site.register(pointOfSale, pointOfSaleAdmin)
 
 class pointOfSaleAdminHist(admin.ModelAdmin):
     list_display = ('name', 'cash','peaksu','dernierArticles','responsable','membre','wallet')
-    readonly_fields = ('name', 'cash','peaksu','dernierArticles','responsable','membre','wallet')
+    readonly_fields = ('cash','peaksu','dernierArticles','responsable','membre')
     history_list_display = ('name', 'cash','peaksu','dernierArticles','responsable','membre')
     search_fields = ['name', 'wallet','responsable','membre']
 
@@ -168,16 +216,38 @@ class MembresAdmin(admin.ModelAdmin):
         'dateDerniereCotisation', 'cotisation', 
         'dateAjout', 'aJourCotisation', 'numeroAdherant', 'Status')
     
-    readonly_fields = ( 'numeroAdherant', 'Status','dateInscription','dateDerniereCotisation',
+    readonly_fields = ( 'numeroAdherant', 'Status','dateInscription',
         'dateAjout')
 
-    search_fields = ['name','pseudo', 'email', 'numeroAdherant', 'tel']
+
+    search_fields = ['name','pseudo',]
+
     inlines = [
         CarteCashlessInline,
     ]
+    list_per_page = 20
 
-
+    # def save_related(self, request, form, formsets, change):
+    #     print('change!!!!!!!!!!!!!!',change)
+    #     super(type(self), self).save_related(request, form, formsets, change)
+    #     if not change :
+    #         if form.cleaned_data['ajout_2_PeakSu_Cadeau'] :
+    #             membreDb = Membres.objects.get(name=form.cleaned_data['name'])
+    #             carteDb = CarteCashless.objects.get(membre=membreDb)
+    #             carteDb.peaksu = 0
+    #             carteDb.save()
+    #             carteDb.peaksuCadeau = 2
+    #             carteDb.save()
+    #             membreDb.ajout_2_PeakSu_Cadeau = False
+    #             membreDb.save()
 
 admin.site.register(Membres, MembresAdmin)
 
 
+# class ouvertureBarHist(SimpleHistoryAdmin):
+#     list_display = ( 'pos', 'ouverture','responsable','dateTime')
+#     readonly_fields = ( 'pos', 'ouverture','responsable','dateTime')
+#     history_list_display = ( 'pos', 'ouverture','responsable','dateTime')
+#     search_fields = ('pos','responsable','dateTime')
+
+# admin.site.register(ouvertureBar, ouvertureBarHist)

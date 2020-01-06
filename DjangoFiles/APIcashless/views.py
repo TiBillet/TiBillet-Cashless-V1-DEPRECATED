@@ -34,8 +34,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Max, Min
 
 
-from mailchimp3 import MailChimp
-
 
 
 
@@ -108,9 +106,9 @@ def calculRapportBar(jour, pos):
                 responsableDb = Membres.objects.get(name=responsable)
 
                 rARdB, created = rapportBar.objects.get_or_create(responsable=responsableDb ,pos=pos ,date=jour, recup=False)
-                rARdB.totalBarResto = Activite[responsable]['totalBarResto']
-                rARdB.benefice = Activite[responsable]['benefice']
-                rARdB.ardoise = Activite[responsable]['ardoise']
+                rARdB.totalBarResto = round(Activite[responsable]['totalBarResto'],2)
+                rARdB.benefice = round(Activite[responsable]['benefice'],2)
+                rARdB.ardoise = round(Activite[responsable]['ardoise'],2)
 
                 rARdB.save()
 
@@ -118,13 +116,13 @@ def calculRapportBar(jour, pos):
                responsableDb = Membres.objects.get(name=responsable)
 
                rARdB, created = rapportBar.objects.get_or_create(responsable=responsableDb ,pos=pos ,date=jour, recup=False)
-               rARdB.totalBarResto = Activite[responsable]['totalBarResto']
-               rARdB.benefice = Activite[responsable]['benefice']
-               rARdB.ardoise = Activite[responsable]['ardoise']
-               rARdB.gratuit = Activite[responsable]['gratuit']
+               rARdB.totalBarResto = round(Activite[responsable]['totalBarResto'],2)
+               rARdB.benefice = round(Activite[responsable]['benefice'],2)
+               rARdB.ardoise = round(Activite[responsable]['ardoise'],2)
+               rARdB.gratuit = round(Activite[responsable]['gratuit'],2)
 
-               rARdB.totalCashless = Activite[responsable]['totalCashless']
-               rARdB.totalCashCB = Activite[responsable]['Cash/CB']
+               rARdB.totalCashless = round(Activite[responsable]['totalCashless'],2)
+               rARdB.totalCashCB = round(Activite[responsable]['Cash/CB'],2)
 
                rARdB.save() 
 
@@ -185,19 +183,25 @@ def PostGetCashlessName(request):
             try:
                 CarteMaitresseDb = tagIdCardMaitresse.objects.get(CarteCashless=CarteCashlessDb)
                 PosDb = CarteMaitresseDb.pos
+                data = {}
+                data['cashlessName'] = PosDb.name
+            except :
+                data['cashlessName'] = False
 
-                data = {'cashlessName':PosDb.name, 'responsableName':CarteCashlessDb.membre.name}
-                print("PostGetCashlessName : ",data)
-                return JsonResponse(data, safe=False)
-            except Exception as e:
-                data = {'cashlessName':False, 'responsableName':False}
-                return JsonResponse(data, safe=False)
+            try:
+                data['responsableName'] = CarteCashlessDb.membre.name
+            except :
+                data['responsableName'] = CarteCashlessDb.number
+
+            print("PostGetCashlessName : ",data)
+            return JsonResponse(data, safe=False)
 
         except Exception as e:
             print("PostGetCashlessName : ",e)
             return HttpResponseNotFound("You didn't say the magic word !")
     else :
         return HttpResponseNotFound("You didn't say the magic word !")
+
 
 @api_view(['POST','GET'])
 def PostGetArticles(request):
@@ -232,22 +236,22 @@ def PostGetIdCard(request):
 
     if request.method == 'POST':
         print(request.user)
-        data = JSONParser().parse(request)
-        print(data)
-        POS = data['POS']
-        tagId = data['tagId']
+        try:
+            data = JSONParser().parse(request)
+            POS = data['POS']
+            tagId = data['tagId']
+            print(data)
+        except Exception as e:
+            numberId = request.data['number']
 
         try:
-            carte, created = CarteCashless.objects.get_or_create(tagId=tagId)
+            try:
+                carte, created = CarteCashless.objects.get_or_create(tagId=tagId)
+            except Exception as e:
+                carte = CarteCashless.objects.get(number=numberId)
         except Exception as e:
             return HttpResponseNotFound("Carte n'existe pas ou ne peux pas être crée")
 
-        try:
-            assert data['rpg']
-            carte.rpg = True
-            carte.save()
-        except Exception as e:
-            pass
 
         if created or not carte.wallet:
             newWallet = CreateWallet()
@@ -292,9 +296,9 @@ def PostPayCashOnly(request):
         responsable = CarteCashlessDb.membre
         pointOfSaleDb = CarteMaitresseDb.pos
 
-        ListArticles = []
+        # ListArticles = []
         for article in articles :
-            ListArticles.append(str(articles[article])+str(article))
+            # ListArticles.append(str(articles[article])+str(article))
             articleDB =  Articles.objects.get(name=article)
             prix = articleDB.prix
 
@@ -390,9 +394,9 @@ def gestionPeaksuArticle(carte, total, CarteCashlessDbMaitresse, articles, pos, 
 
 
 
-    ListArticles = []
+    # ListArticles = []
     for article in articles :
-        ListArticles.append(str(articles[article])+str(article))
+        # ListArticles.append(str(articles[article])+str(article))
         articleDB =  Articles.objects.get(name=article)
         prix = articleDB.prix
         qty = articles[article]
@@ -564,14 +568,26 @@ def PaimentCashlessBarResto(request):
 def AjoutPeaksu(request):
 
     if request.method == 'POST':
-        data = JSONParser().parse(request)
-        print(data)
 
-        cardIdMaitresse = data['cardIdMaitresse']
-        total = float(data['total'])
-        articles = data['articles']
+        try:
+            data = JSONParser().parse(request)
+            print(data)
 
-        CarteCashlessDbadherant = CarteCashless.objects.get(tagId = data['tagId'])
+            cardIdMaitresse = data['cardIdMaitresse']
+            total = float(data['total'])
+            articles = data['articles']
+
+            CarteCashlessDbadherant = CarteCashless.objects.get(tagId = data['tagId'])
+        except Exception as e:
+            cardIdMaitresse = request.data['cardIdMaitresse']
+            numberId = request.data['number']
+            total = float(request.data['total'])
+            # TODO: exeption parce que j'arrive pas a faire un json propre avec ionic...
+            articles = { "PeakSu +x" : float(request.data['articles'])}
+            print(articles)
+
+            CarteCashlessDbadherant = CarteCashless.objects.get(number=numberId)
+
         peaksu = CarteCashlessDbadherant.peaksu
 
         CarteCashlessDbMaitresse = CarteCashless.objects.get(tagId = cardIdMaitresse)
@@ -593,9 +609,9 @@ def AjoutPeaksu(request):
 
         ViderCarte = False
 
-        ListArticles = []
+        # ListArticles = []
         for article in articles :
-            ListArticles.append(str(articles[article])+str(article))
+            # ListArticles.append(str(articles[article])+str(article))
 
             articleDB =  Articles.objects.get(name=article)
             prix = articleDB.prix
@@ -992,6 +1008,11 @@ def reportsArticleVendus(request) :
 def addEmailToMailchimp(request) :
     print('request addEmailToMailchimp')
     if request.method == 'POST':
+
+        from mailchimp3 import MailChimp
+        mailchimpClient = MailChimp(mc_api='', mc_user='')
+
+
         for membre in Membres.objects.filter(dateAjout__gte=(datetime.now() - timedelta(days = 2))) :
             if membre.email :
                 try:

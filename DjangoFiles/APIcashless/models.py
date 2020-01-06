@@ -1,4 +1,5 @@
 from django.db import models
+# from simple_history.models import HistoricalRecords
 from datetime import datetime
 from dateutil import parser
 from django.utils import timezone
@@ -11,6 +12,7 @@ from requests.auth import HTTPBasicAuth
 from dateutil import tz
 runZone = tz.gettz('Indian/Reunion')
 
+# import ipdb; ipdb.set_trace()
 
 
 class StatusMembres(models.Model):
@@ -52,6 +54,8 @@ class Membres(models.Model) :
 
     class Meta:
         ordering = ('name',)
+        verbose_name = 'Membre'
+        verbose_name_plural = 'Membres'
 
     def __str__(self): 
         if self.pseudo :
@@ -60,14 +64,15 @@ class Membres(models.Model) :
             return self.name
 
 
+
 class pointOfSale(models.Model):
     name = models.CharField(db_index=True, max_length=30)
     wallet = models.CharField(max_length=38, blank=True, null=True)
     cash = models.FloatField(default=0)
     peaksu = models.FloatField(default=0)
     articles = models.ManyToManyField('Articles', blank=True)
-    responsable = models.ForeignKey(Membres, null=True, blank=True, related_name='membreResponsable')
-    membre = models.ForeignKey(Membres, null=True, blank=True, related_name='membre' )
+    responsable = models.ForeignKey(Membres, null=True, blank=True, related_name='membreResponsable',on_delete=models.SET_NULL)
+    membre = models.ForeignKey(Membres, null=True, blank=True, related_name='membre' ,on_delete=models.SET_NULL)
     dernierArticles = models.CharField(max_length=200, blank=True, null=True)
     # history = HistoricalRecords()
 
@@ -76,7 +81,8 @@ class pointOfSale(models.Model):
 
     class Meta:
         ordering = ('name',)
-
+        verbose_name = 'Point de vente'
+        verbose_name_plural = 'Points de vente'
 
 class PageArticle(models.Model):
     name = models.CharField(max_length=30)
@@ -114,7 +120,8 @@ class Articles(models.Model):
 
     class Meta:
         ordering = ( 'page', 'poidListe',)
-
+        verbose_name = 'article'
+        verbose_name_plural = 'Tarifs et articles'
 
 class moyenPaiement(models.Model):
     name = models.CharField(db_index=True, max_length=30)
@@ -128,7 +135,7 @@ class CarteCashless(models.Model):
     number = models.CharField(db_index=True, max_length=5, blank=True, null=True, unique=True)
     wallet = models.CharField(max_length=38, blank=True, null=True, unique=True)
     peaksu = models.FloatField(default=0)
-    Last_changeBy = models.ForeignKey(pointOfSale, blank=True, null=True)
+    Last_changeBy = models.ForeignKey(pointOfSale, blank=True, null=True, on_delete=models.SET_NULL)
     membre = models.ForeignKey(Membres, blank=True, null=True, on_delete=models.SET_NULL)
     peaksuCadeau = models.FloatField(default=0)
     # history = HistoricalRecords()
@@ -174,14 +181,19 @@ class CarteCashless(models.Model):
 
     class Meta:
         ordering = ('number',)
+        verbose_name = 'Carte cashless'
+        verbose_name_plural = 'Cartes cashless'
 
 
 class tagIdCardMaitresse(models.Model):
-    CarteCashless = models.ForeignKey(CarteCashless, related_name='CardMaitresse', blank=True, null=True)
-    pos = models.ForeignKey(pointOfSale)
+    CarteCashless = models.ForeignKey(CarteCashless, related_name='CardMaitresse', blank=True, null=True, on_delete=models.SET_NULL)
+    pos = models.ForeignKey(pointOfSale,on_delete=models.PROTECT)
     
     def __str__(self):              # __unicode__ on Python 2
-        return self.CarteCashless.tagId+" "+self.pos.name
+        try:
+            return self.CarteCashless.tagId+" "+self.pos.name
+        except Exception as e:
+            return self.pos.name
 
     def strNumber(self):
         if self.CarteCashless :
@@ -207,28 +219,33 @@ class tagIdCardMaitresse(models.Model):
         else :
             return ""
 
+    class Meta:
+        verbose_name = 'Carte maîtresse'
+        verbose_name_plural = 'Cartes maîtresses'
+
 
 
 class ArticlesVendus(models.Model):
-    article = models.ForeignKey(Articles)
+    article = models.ForeignKey(Articles, on_delete=models.PROTECT)
     prix = models.FloatField(default=0, null=True)
     qty = models.FloatField(default=0, null=True)
-    pos = models.ForeignKey(pointOfSale)
-    BoitierUser = models.ForeignKey(User, null=True, blank=True)
+    pos = models.ForeignKey(pointOfSale, on_delete=models.PROTECT)
+    BoitierUser = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     dateTps = models.DateTimeField(default=timezone.now)
-    membre = models.ForeignKey(Membres, null=True, blank=True)
-    carte = models.ForeignKey(CarteCashless, null=True, blank=True)
-    responsable = models.ForeignKey(Membres, null=True, blank=True, related_name='responsableBar' )
-    moyenPaiement = models.ForeignKey(moyenPaiement, null=True, blank=True)
+    membre = models.ForeignKey(Membres, null=True, blank=True, on_delete=models.SET_NULL)
+    carte = models.ForeignKey(CarteCashless, null=True, blank=True, on_delete=models.SET_NULL)
+    responsable = models.ForeignKey(Membres, null=True, blank=True, related_name='responsableBar', on_delete=models.SET_NULL )
+    moyenPaiement = models.ForeignKey(moyenPaiement, null=True, blank=True, on_delete=models.SET_NULL)
     comptabilise = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-dateTps',)
-
+        verbose_name = 'Article vendu'
+        verbose_name_plural = 'Articles vendus'
 
 class rapportBar(models.Model):
-    responsable = models.ForeignKey(Membres)
-    pos = models.ForeignKey(pointOfSale)
+    responsable = models.ForeignKey(Membres, on_delete=models.PROTECT)
+    pos = models.ForeignKey(pointOfSale, on_delete=models.PROTECT)
     date = models.DateField(blank=True, null=True)
     totalBarResto = models.FloatField(default=0, null=True)
     totalCashless = models.FloatField(default=0, null=True)
@@ -244,18 +261,21 @@ class rapportBar(models.Model):
 
     class Meta:
         ordering = ('-date',)
-
+        verbose_name = 'Rapport caisse'
+        verbose_name_plural = 'Rapports caisse'
 
 class rapportArticlesVendu(models.Model):
     date = models.DateField()
-    article = models.ForeignKey(Articles)
+    article = models.ForeignKey(Articles, on_delete=models.PROTECT)
     qty = models.SmallIntegerField(default=0, null=True)
 
     class Meta:
         ordering = ('-date',)
+        verbose_name = 'Rapport quantités vendus'
+        verbose_name_plural = 'Rapports quantités vendus'
 
 class BoissonCoutant(models.Model):
-    CarteCashless = models.ForeignKey(CarteCashless, related_name='BoissonCoutantCarteM', blank=True, null=True)
+    CarteCashless = models.ForeignKey(CarteCashless, related_name='BoissonCoutantCarteM', blank=True, null=True, on_delete=models.SET_NULL)
     nbrBoisson = models.IntegerField(default=0)
     date = models.DateField(blank=True,null=True)
 
@@ -300,18 +320,19 @@ def Membres_creation_si_cotisation(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=rapportBar)
 def valeurCaisseFaite(sender, instance, created, **kwargs):
-    if instance.caisse > 0 :
-        # rapportBar = instance
-        print("receiver valeurCaisseFaite : ",instance)
+    # if instance.caisse > 0 :
+    #     # rapportBar = instance
+    #     print("receiver valeurCaisseFaite : ",instance)
 
-        ArtVendus = ArticlesVendus.objects.filter(comptabilise=False, dateTps__date__lte=instance.date)
-        for x in ArtVendus :
-            x.comptabilise = True
-            x.save()
+    #     ArtVendus = ArticlesVendus.objects.filter(comptabilise=False, dateTps__date__lte=instance.date)
+    #     for x in ArtVendus :
+    #         print(x)
+    #         x.comptabilise = True
+    #         x.save()
 
+    #     print("compta ok")
     if instance.recup == False :
         if instance.caisse > 0 :
             instance.recup = True
             instance.save()
-
 
