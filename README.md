@@ -64,8 +64,6 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
     ```pwgen 30 -yC``` 
 - Build docker image for Django : 
     ```docker build -t cashless_django ./Docker```
-- Build docker image for Postgres/Cron : 
-    ```docker build -t cashless_postgres ./Postgres```
 - Init Django Project : 
     ```
     cd Docker
