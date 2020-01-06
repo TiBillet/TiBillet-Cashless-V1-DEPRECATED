@@ -38,7 +38,6 @@ from django.db.models import Max, Min
 
 
 
-
 def calculRapportBar(jour, pos):
     # veille = datetime.now().date() - timedelta(days=1)
     # jour = datetime.now().date()
