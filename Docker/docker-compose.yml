@@ -10,7 +10,7 @@ services:
     hostname: cashless_postgres
     environment:
       POSTGRES_USER: cashless_postgres_user
-      POSTGRES_PASSWORD: YOUR_SECRET_HERE
+      POSTGRES_PASSWORD: 'YOUR_SECRET_HERE'
       POSTGRES_DB: cashless_postgres_db 
 
   cashless_django:

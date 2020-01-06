@@ -132,12 +132,16 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
 - Edit the DjangoFiles/Cashless/urls.py and replace ALL the lines (!) by :
 
     ```
+    from django.contrib import admin
+    from django.urls import path
     from django.conf.urls import url, include
     from APIcashless import urls
 
     urlpatterns = [
+        path('admin/', admin.site.urls),
         url(r'^', include(urls)),
     ]
+
     ```
 
 - Start all the container ( use -d if you want detached mode. ) :
@@ -162,7 +166,7 @@ Nous vous proposons deux façons d'utiliser Ti Billet. La première est une inst
      docker-compose up -d
      ``` 
 
-- log in to the admin panel in http://localhost:8000
+- log in to the admin panel in http://localhost:8000/admin
 
 - Create one user for each Kivy Client.
 - Create Master Card for each point of sale.
