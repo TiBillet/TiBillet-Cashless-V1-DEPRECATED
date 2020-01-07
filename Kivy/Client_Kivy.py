@@ -52,18 +52,34 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 
+''' SENTRY :
+try:
+    import sentry_sdk
+    sentry_sdk.init("")
+except Exception as e:
+    logger.error("import sentry_sdk failed. : "+ str(e))
+    logger.error(str(traceback.format_exc()))
+'''
+
+
 '''CREDENTIALS'''
 import configClient
 username = configClient.username
 password = configClient.password
-ipServeur = configClient.ipServeur
+
+import sys
+try:
+    ipServeur = sys.argv[1]
+except Exception as e:
+    ipServeur = configClient.ipServeur
 
 '''nfc reader init'''
 clf = nfc.ContactlessFrontend()
 
+rowNum = 0
 
 from kivy.core.window import Window
-Window.size = (480, 800)
+# Window.size = (480, 800)
 
 
 os.environ['TZ'] = 'Indian/Reunion'
@@ -408,9 +424,9 @@ class ButtonUX_BAR1(FloatLayout):
         self.layoutPageCashless.add_widget(self.layoutPageCashlessPeaksu)  
 
 
-        self.layoutPageCashlessCaisse = Button(text = "CAISSE")
-        self.layoutPageCashlessCaisse.bind(on_press=self.BtnlayoutPageCashlessCaisse_fin_Journee)
-        self.layoutPageCashless.add_widget(self.layoutPageCashlessCaisse)  
+        # self.layoutPageCashlessCaisse = Button(text = "CAISSE")
+        # self.layoutPageCashlessCaisse.bind(on_press=self.BtnlayoutPageCashlessCaisse_fin_Journee)
+        # self.layoutPageCashless.add_widget(self.layoutPageCashlessCaisse)  
 
         self.popuplayoutPageCashless = Popup(title='CHOIX P.Vente',
             content=self.layoutPageCashless,
@@ -452,18 +468,21 @@ class ButtonUX_BAR1(FloatLayout):
             clf.close()
 
             self.listArticlesDjango = self.requestArticle()
-            PostGetCashlessNameJson = self.requestpointCashlessName()
-
-            try:
+            if self.listArticlesDjango :
+                PostGetCashlessNameJson = self.requestpointCashlessName()
+                print("PostGetCashlessNameJson ; ",PostGetCashlessNameJson)
                 self.panier.pointCashlessName = PostGetCashlessNameJson['cashlessName']
-                self.panier.responsableName = PostGetCashlessNameJson['responsableName']
-                self.popuplayoutPageCashless.title = str(self.panier.pointCashlessName.encode('utf-8'))+" - "+str(self.panier.responsableName.encode('utf-8'))
-            except Exception as e:
-                pass
-
-
-            print("FUNC maitresseConnectFunc - self.listArticlesDjango : ",self.listArticlesDjango)
-            time.sleep(0.5)
+                
+                try:
+                    self.panier.responsableName = PostGetCashlessNameJson['responsableName']
+                    self.popuplayoutPageCashless.title = str(self.panier.pointCashlessName.encode('utf-8'))+" - "+str(self.panier.responsableName.encode('utf-8'))
+                except Exception as e:
+                    self.panier.responsableName = "Inconnu"
+                    self.popuplayoutPageCashless.title = str(self.panier.pointCashlessName.encode('utf-8'))+" - "+str(self.panier.responsableName.encode('utf-8'))
+                    pass
+                print("FUNC maitresseConnectFunc - self.listArticlesDjango : ",self.listArticlesDjango)
+            else :
+                time.sleep(1)
 
 
         if self.listArticlesDjango :
@@ -839,7 +858,7 @@ class ButtonUX_BAR1(FloatLayout):
             if r.status_code == 200 :
                 logger.debug("requestpointCashlessName JSON : "+str(r.json()))
                 PostGetCashlessNameJson = r.json()
-                if PostGetCashlessNameJson['responsableName'] :
+                if PostGetCashlessNameJson['cashlessName'] :
                     print("PostGetCashlessNameJson :",PostGetCashlessNameJson)
                     return PostGetCashlessNameJson
                 else :
@@ -1110,6 +1129,8 @@ class ButtonUX_BAR1(FloatLayout):
     def resetFunc(self,instance):
        
         self.panier.items = {}
+        global row
+        rowNum = 0
 
         try:
             global carteJson
