@@ -3,7 +3,7 @@
 # DEPRECATED
 
 ## CE DEPOT N'EST PLUS MAINTENU. 
-### En effet, ceci est la première version du logiciel de Cashless TiBillet et n'est plus utilisé actuellement dans aucun lieu, ni maintenue.
+### En effet, ceci est la première version du logiciel de Cashless TiBillet et n'est plus utilisée actuellement dans aucun lieu, ni maintenue.
 ### La V2 est en cours de révision et d'audit de sécurité et sera plubiée en open-source prochainement, merci pour votre patience !
 ### D'ici la, vous pouvez toujours nous contacter pour la moindre question !
 
