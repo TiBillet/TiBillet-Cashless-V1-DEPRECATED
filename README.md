@@ -1,3 +1,14 @@
+#######################################################################
+
+# DEPRECATED
+
+## CE DEPOT N'EST PLUS MAINTENU. 
+### En effet, ceci est la première version du logiciel de Cashless TiBillet et n'est plus utilisé actuellement dans aucun lieu, ni maintenue.
+### La V2 est en cours de révision et d'audit de sécurité et sera plubiée en open-source prochainement, merci pour votre patience !
+### D'ici la, vous pouvez toujours nous contacter pour la moindre question !
+
+#######################################################################
+
 # Application de système cashless et de gestion clientèle et/ou membres associatifs pour café/bar et évènements culturels.
 
 ### https://www.tibillet.re
