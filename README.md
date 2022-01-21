@@ -4,7 +4,8 @@
 
 ## CE DEPOT N'EST PLUS MAINTENU. 
 ### En effet, ceci est la première version du logiciel de Cashless TiBillet et n'est plus utilisée actuellement dans aucun lieu, ni maintenue.
-### La V2 est en cours de révision et d'audit de sécurité et sera plubiée en open-source prochainement, merci pour votre patience !
+### Retrouvez la suite ici : https://github.com/Nasjoe/TiBillet-Ticket
+
 ### D'ici la, vous pouvez toujours nous contacter pour la moindre question !
 
 #######################################################################
@@ -16,10 +17,6 @@
 ##### Si vous habitez ou passez sur l'île de la réunion, venez voir l'association des 3Peaks de Manapany dans le Sud Sauvage qui maintient et utilise cette application au quotidien, pendant les "Dimanches du Sud Sauvage" et surtout pour le Manapany Festival !
 
 ##### Nous avons créé cette application pour une utilisation sur mesure. Certaines fonctionnalités ne vous seront probablement pas utiles. N'hésitez pas à nous contacter ! ( https://www.3peaks.fr/ )
-
-## Autre dépots du projets :
-- https://github.com/Nasjoe/TiBillet-Cashless
-- https://github.com/Nasjoe/TiBillet-LandingPage
 
 ## Comprend :
 - Un module Cashless basé sur une cryptomonnaie et une base de données interne.
