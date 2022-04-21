@@ -4,7 +4,7 @@
 
 ## CE DEPOT N'EST PLUS MAINTENU. 
 ### En effet, ceci est la première version du logiciel de Cashless TiBillet et n'est plus utilisée actuellement dans aucun lieu, ni maintenue.
-### Retrouvez la suite ici : https://github.com/TiBillet-Coop/
+### Retrouvez la suite ici : https://github.com/TiBillet/
 
 ### D'ici la, vous pouvez toujours nous contacter pour la moindre question !
 
